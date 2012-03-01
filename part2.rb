@@ -19,41 +19,27 @@ def rps_game_winner(game)
 end
 
 def rps_tournament_winner(tournament)
-
-  tournament_new = Array.new(2,Array.new)
   
-  tournament.flatten(1).each_with_index {|x,idx| 
-    tournament_new[idx] = rps_game_winner(x)
+  arr_2 = Array.new
+  arr_1 = Array.new
+  
+  tournament.each_with_index {|t_1,i_1| 
+     
+     t_1.each_with_index {|t_2,i_2|
+     
+        arr_2[i_2] = rps_game_winner(t_2)
+     }
+     arr_1[i_1] = rps_game_winner(arr_2)
+      
   }
   
-  i = 0
-  j = 0
-  tournament_final = Array.new
-  while i < tournament_new.length
-  
-    tournament_final[j] = [tournament_new[i],tournament_new[i+1]]
-    
-    i+=2
-    j+=1
-  end   
-
-  if tournament_final.length != 1  
-    rps_tournament_winner(tournament_final)
-  end
-  
-  
+  rps_game_winner(arr_1)
 
 end
 
-tournament = [
-[
-[ ["Armando", "P"], ["Dave", "S"] ],
-[ ["Richard", "R"], ["Michael", "S"] ],
-],
-[
-[ ["Allen", "S"], ["Omer", "P"] ],
-[ ["David E.", "R"], ["Richard X.", "P"] ]
-]
-]
-rps_tournament_winner(tournament)
+#tournament = [[["Dave", "S"], ["Richard", "R"]], [["Allen", "S"], ["Richard X.", "P"]]]
+
+tournament = [[[["Armando", "P"],["Dave", "S"]],[["Richard", "R"],["Michael", "S"]],],[[["Allen", "S"], ["Omer", "P"] ],[ ["David E.", "R"], ["Richard X.", "P"] ]]]
+
+print rps_tournament_winner(tournament)
 
