@@ -39,7 +39,24 @@ end
 
 #tournament = [[["Dave", "S"], ["Richard", "R"]], [["Allen", "S"], ["Richard X.", "P"]]]
 
-tournament = [[[["Armando", "P"],["Dave", "S"]],[["Richard", "R"],["Michael", "S"]],],[[["Allen", "S"], ["Omer", "P"] ],[ ["David E.", "R"], ["Richard X.", "P"] ]]]
+tournament = [
+	[
+		[ ["Armando", "P"], ["Dave", "S"] ],
+		[ ["Richard", "R"], ["Michael", "S"] ],
+	],
+	[
+		[ ["Allen", "S"], ["Omer", "P"] ],
+		[ ["David E.", "R"], ["Richard X.", "P"] ]
+	],
+	[
+		[ ["Armando", "P"], ["Dave", "S"] ],
+		[ ["Richard", "R"], ["Michael", "S"] ],
+	],
+	[
+		[ ["Allen", "S"], ["Omer", "P"] ],
+		[ ["David E.", "R"], ["Richard X.", "P"] ]
+	]
+]
 
-rps_tournament_winner(tournament)
+print rps_tournament_winner(tournament)
 

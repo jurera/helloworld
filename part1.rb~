@@ -14,7 +14,7 @@ print palindrome?("Abracadabra")
 print "\n"
 
 def count_words(string)
-  string.downcase.scan(/\w+/).inject(Hash.new(0)) {|h,i| h(i) += 1;h}
+  string.downcase.scan(/\w+/).inject(Hash.new(0)) {|h,i| h[i] += 1; h }
 end
 
 print "A man, a plan, a canal -- Panama\n"
