@@ -1,0 +1,50 @@
+class Dessert
+
+  def initialize(name,calories)
+    @name = name
+    @calories = calories
+  end
+  
+  attr_accessor :name
+  attr_accessor :calories
+  
+  def healthy?
+    calories < 200
+  end
+  
+  def delicious?
+    true
+  end
+
+end
+
+class JellyBean < Dessert
+
+   
+  
+  def initialize(name, calories, flavour)
+    @name = name
+    @calories = calories
+    @flavour = flavour
+  end
+  
+  attr_accessor :flavour
+  
+  def delicious?
+     @flavour != "black licorice" 
+  end  
+end
+
+
+qwe = JellyBean.new("melona", 201, "black licorice")
+qwe.calories = 12
+print qwe.name,"\n"
+print qwe.healthy?,"\n"
+qwe.name = "Limona"
+print qwe.name,"\n"
+print qwe.flavour,"\n"
+qwe.flavour = "red"
+print qwe.delicious?,"\n"
+
+
+
