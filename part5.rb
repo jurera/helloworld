@@ -44,8 +44,3 @@ class Foo
 
   attr_accessor_with_history :bar
 end
-
-f = Foo.new
-print f.bar = 1, "\n"
-print f.bar = 2, "\n"
-print f.bar_history, "\n" # => if your code works, should be [nil,1,2]
