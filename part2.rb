@@ -18,45 +18,35 @@ def rps_game_winner(game)
   
 end
 
-def rps_tournament_winner(tournament)
-  
-  arr_2 = Array.new
-  arr_1 = Array.new
-  
-  tournament.each_with_index {|t_1,i_1| 
-     
-     t_1.each_with_index {|t_2,i_2|
-        print t_2, "\n"    
-        #arr_2[i_2] = rps_game_winner(t_2)
-     }
-     #arr_1[i_1] = rps_game_winner(arr_2)
-      
-  }
-  
-  #rps_game_winner(arr_1)
-
+def rps_tournament_winner(game)
+  if game[0][1].class==String
+    rps_game_winner(game)
+  else  
+    a1=rps_tournament_winner(game[0])
+    a2=rps_tournament_winner(game[1])
+    rps_tournament_winner([a1,a2])
+  end
 end
 
 #tournament = [[["Dave", "S"], ["Richard", "R"]], [["Allen", "S"], ["Richard X.", "P"]]]
 
 tournament = [
-	[
-		[ ["Armando", "P"], ["Dave", "S"] ],
-		[ ["Richard", "R"], ["Michael", "S"] ],
-	],
-	[
-		[ ["Allen", "S"], ["Omer", "P"] ],
-		[ ["David E.", "R"], ["Richard X.", "P"] ]
-	],
-	[
-		[ ["Armando", "P"], ["Dave", "S"] ],
-		[ ["Richard", "R"], ["Michael", "S"] ],
-	],
-	[
-		[ ["Allen", "S"], ["Omer", "P"] ],
-		[ ["David E.", "R"], ["Richard X.", "P"] ]
-	]
+  [
+    [ ["A1", "P"], ["A2", "S"] ],
+    [ ["A3", "R"],  ["A4", "S"] ],           
+  ],
+  [
+    [ ["Armando", "P"], ["Dave", "S"] ],
+    [ ["Richard", "R"],  ["Michael", "S"] ], 
+  ],
+  [
+    [ ["Armando", "P"], ["Dave", "S"] ],
+    [ ["Richard", "R"],  ["Michael", "S"] ], 
+  ],
+  [
+    [ ["Armando", "P"], ["Dave", "S"] ],
+    [ ["Richard", "R"],  ["Michael", "S"] ], 
+  ]
 ]
-
 print rps_tournament_winner(tournament)
 

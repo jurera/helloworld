@@ -9,7 +9,7 @@ class Class
     class_eval %Q{
       
       def #{attr_name}_history
-        @#{attr_name}_history
+        @#{attr_name}_history   
       end
       
       def #{attr_name}_history=(value)
@@ -46,6 +46,5 @@ class Foo
 end
 
 f = Foo.new
-f.bar = 1, "\n"
-f.bar = 2, "\n"
-f.bar_history, "\n" # => if your code works, should be [nil,1,2]
+
+print f.bar_history

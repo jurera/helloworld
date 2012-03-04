@@ -2,13 +2,13 @@ require 'test/unit'
 require './part5.rb'
 
    class FooTest
-      def initialize()
-        @teste 
-        @teste_history = Array.new
-        @teste_history << @teste
-      end
-
       attr_accessor_with_history :teste
+    end
+    
+    class FooMultiple
+      attr_accessor_with_history :bar1
+      attr_accessor_with_history :bar2
+      attr_accessor_with_history :bar3
     end
 
 class AccesorHistoryTest < Test::Unit::TestCase 
@@ -40,13 +40,18 @@ class AccesorHistoryTest < Test::Unit::TestCase
   
   def test_attr_accessor_with_history_multiple
     f = Foo.new
+    g = Foo.new
+    
     f.bar = 1
-    #f.nombre = 'armando' 
+    g.bar = "qwe"
+    
     f. bar = 4
+    g.bar = 3
     f.bar_history
     
     assert_equal [nil,1,4], f.bar_history
-    #assert_equal [nil,'armando'], f.nombre_history
+    assert_equal [nil,"qwe",3], g.bar_history
+
 
   end 
     
@@ -74,12 +79,27 @@ class AccesorHistoryTest < Test::Unit::TestCase
 
   end 
   
-    def test_attr_accessor_with_nil
+  def test_attr_accessor_with_nil
    
     f = FooTest.new
 
     
     assert_equal [nil], f.teste_history
+    
+
+  end 
+  
+    def test_attr_accessor_with_multiple_1
+   
+    f = Foo.new
+    f.bar = "qwe"
+    f.bar = 1
+    f.bar = 4
+    f = Foo.new
+    
+
+    
+    assert_equal [nil], f.bar_history
     
 
   end 
