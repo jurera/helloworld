@@ -87,25 +87,12 @@ class AccesorHistoryTest < Test::Unit::TestCase
     f = FooTest.new
 
     
-    assert_equal [nil], f.teste_history
+    assert_equal nil, f.teste_history
     
 
   end 
   
-    def test_attr_accessor_with_multiple_1
-   
-    f = Foo.new
-    f.bar = "qwe"
-    f.bar = 1
-    f.bar = 4
-    f = Foo.new
-    
-
-    
-    assert_equal [nil], f.bar_history
-    
-
-  end 
+  
    def test_attr_accessor_with_multiple_attr_in_class
   
     f = FooMultiple.new
@@ -122,9 +109,9 @@ class AccesorHistoryTest < Test::Unit::TestCase
     f.bar2 = 2
     f.bar3 = 1
     
-    assert_equal [nil,1,1,1], f.bar1_history
-    assert_equal [nil,2,2,2], f.bar2_history
-    assert_equal [nil,1,1,1], f.bar3_history  
+    assert_equal [nil,1,1,1,1], f.bar1_history
+    assert_equal [nil,2,2,2,2], f.bar2_history
+    assert_equal [nil,1,1,1,1], f.bar3_history  
   
   end
   
