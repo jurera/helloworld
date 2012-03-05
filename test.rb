@@ -1,22 +1,35 @@
-class Talker
-  def self.say(*args)
-    puts "Inside self.say"
-    puts "self = #{self}"
-    args.each do |arg|
-      method_name = ("say_" + arg.to_s).to_sym
-      send :define_method, method_name do
-        puts arg
-      end
-    end
+class ExampleClass
+  @variable = "foo"
+  @@variable = "bar"
+  
+  def initialize
+    @variable = "baz"
+  end
+  
+  def self.test
+    puts @variable
+  end
+  
+  def test
+    self.class.test
+    puts @@variable
+    puts @variable
   end
 end
 
-class MyTalker < Talker
-  say :hello
-  say :qwe
+class ExampleSubclass < ExampleClass
+  @variable = "1"
+  @@variable = "2"
+  
+  def initialize
+    @variable = "3"
+  end
 end
 
-m = MyTalker.new
+first_example = ExampleClass.new
+first_example.test
 
-m.say_hello
-m.say_qwe
+puts "---"
+
+second_example = ExampleSubclass.new
+second_example.test
