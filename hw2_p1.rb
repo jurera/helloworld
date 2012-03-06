@@ -36,7 +36,9 @@ puts 5.rupees.in(:yen)
 
 class String
 	def palindrome?()
-		self.to_s == self.gsub(/\W/,'').downcase.reverse.to_s
+		
+		string = self.gsub(/\W/,'').downcase
+		string.downcase.to_s == string.reverse.to_s
 	end
 end
 
@@ -46,12 +48,13 @@ puts "foo".palindrome?
 
 module Enumerable
 	def palindrome?()
-		self.map { |i|i.to_s}.join == self.map { |i|i.to_s}.join.gsub(/\W/,'').downcase.reverse
+		arr = self.map { |i|i.to_s}.join.gsub(/\W/,'').downcase
+		arr == arr.reverse
 	end
 end
 
 puts [1,2,3,2,1].palindrome?
 puts [1,2,3,2].palindrome?
 puts Hash.new(1=>1,2=>2).palindrome?
-
+puts "a man a plan a canal panama".palindrome?
 
