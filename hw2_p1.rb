@@ -30,7 +30,7 @@ class Numeric
 end
 
 
-puts 5.rupees.in(:yen)
+#~ puts 5.rupees.in(:yen)
 #~ puts 5.rupees.in(:yen).between?(7.2, 7.4)
 #~ puts 2.dollar.in(:yen)
 
@@ -42,19 +42,20 @@ class String
 	end
 end
 
-puts "foo".palindrome?
-puts "ana".palindrome?
-puts "foo".palindrome?
+#~ puts "foo".palindrome?
+#~ puts "ana".palindrome?
+#~ puts "foo".palindrome?
 
 module Enumerable
 	def palindrome?()
-		arr = self.map { |i|i.to_s}.join.gsub(/\W/,'').downcase
-		arr == arr.reverse
+		arr = self.map { |k| k}.flatten(1).map { |i| i.to_s}.join.gsub(/\W/,'').downcase
+		arr == arr.reverse		
 	end
 end
 
+puts (1..2).palindrome?
 puts [1,2,3,2,1].palindrome?
 puts [1,2,3,2].palindrome?
-puts Hash.new(1=>1,2=>2).palindrome?
+puts Hash["a" => "a", "b" => "b", "c"=>"a"].palindrome?
 puts "a man a plan a canal panama".palindrome?
 
