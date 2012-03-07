@@ -47,10 +47,19 @@ end
 #~ puts "foo".palindrome?
 
 module Enumerable
+
 	def palindrome?()
-		arr = self.map { |k| k}.flatten(1).map { |i| i.to_s}.join.gsub(/\W/,'').downcase
+		arr = self
+		
+		if (self.class.to_s == "Enumerator") || (self.class.to_s == "Hash")
+			arr = arr.map { |k, vs| vs}.flatten(1)
+		end
+		
+		arr = arr.map { |i| i.to_s}.join.gsub(/\W/,'').downcase
+		
 		arr == arr.reverse		
-	end
+	end	
+
 end
 
 puts (1..2).palindrome?
